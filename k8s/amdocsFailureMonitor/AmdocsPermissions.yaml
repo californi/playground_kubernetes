@@ -1,0 +1,30 @@
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRole
+metadata:
+  name: amdocs-user  # This user must be in the deployments that use K8s API
+rules:
+- apiGroups: ["apps", ""]
+  resources:
+  - deployments
+  - pods
+  - events
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: amdocs-user
+  namespace: default
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRoleBinding
+metadata:
+  name: amdocs-user
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: amdocs-user
+subjects:
+- kind: ServiceAccount
+  name: amdocs-user
+  namespace: default  

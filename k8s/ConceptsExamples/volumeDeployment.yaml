@@ -1,0 +1,68 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: amdocs-volume-deployment
+  labels:
+    app: amdocs-volume-deployment
+spec:
+  selector:
+    matchLabels:
+      app: amdocs-volume-deployment
+  template:
+    metadata:
+      labels:
+        app: amdocs-volume-deployment
+    spec:
+      volumes:
+        - name: shared-files
+          emptyDir: {}
+      containers:
+        - image: californibrs/amdocs_failuremonitor
+          name: amdocs_failuremonitor
+          volumeMounts:
+            - name: shared-files
+              mountPath: /var/www/html
+        - image: openresty/openresty:alpine-fat
+          name: nginx
+          volumeMounts:
+            - name: shared-files
+              mountPath: /var/www/html
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: claiming-disk
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: amdocs-volume-deployment-2
+  labels:
+    app: amdocs-volume-deployment-2
+spec:
+  selector:
+    matchLabels:
+      app: amdocs-volume-deployment-2
+  template:
+    metadata:
+      labels:
+        app: amdocs-volume-deployment-2
+    spec:
+      volumes:
+        - name: persistent-data
+          persistentVolumeClaim: 
+            claimName: claiming-disk
+      containers:
+      - image: californibrs/amdocs_failuremonitor
+        name: amdocs_failuremonitor
+        volumeMounts:
+            mountPath: /external
+            name: persistent-data          

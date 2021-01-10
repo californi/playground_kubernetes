@@ -1,0 +1,66 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: configmap-values
+data:
+  key1: "value1"
+  key2: "value2"
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: amdocs-configsfiles-deployment
+  labels:
+    app: amdocs-configsfiles-deployment
+spec:
+  selector:
+    matchLabels:
+      app: amdocs-configsfiles-deployment
+  template:
+    metadata:
+      labels:
+        app: amdocs-configsfiles-deployment
+    spec:
+      volumes:
+        - name: config-volume
+          configMap:
+            name: configmap-values
+      containers:
+        - image: californibrs/amdocs_failuremonitor
+          name: amdocs_failuremonitor
+          volumeMounts:
+            - name: config-volume
+              mountPath: /config
+        - image: openresty/openresty:alpine-fat
+          name: nginx
+          volumeMounts:
+            - name: config-volume
+              mountPath: /config
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: amdocs-configsfiles-deployment-2
+  labels:
+    app: amdocs-configsfiles-deployment-2
+spec:
+  selector:
+    matchLabels:
+      app: amdocs-configsfiles-deployment-2
+  template:
+    metadata:
+      labels:
+        app: amdocs-configsfiles-deployment-2
+    spec:
+      containers:
+        - image: californibrs/amdocs_failuremonitor
+          name: amdocs_failuremonitor
+          envFrom:
+            - configMapRef:
+                name: configmap-values
+        - image: openresty/openresty:alpine-fat
+          name: nginx
+          envFrom:
+            - configMapRef:
+                name: configmap-values          

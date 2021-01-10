@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: amdocsfailuremanager
+spec:
+  selector:
+    matchLabels:
+      app: amdocsfailuremanager
+  template:
+    metadata:
+      labels:
+        app: amdocsfailuremanager
+    spec:       
+      containers:        
+        - image: californibrs/amdocs_failuremanager  #  put a wrong image to demonstrate the "describe" command
+          name: amdocsfailuremanager
+          resources:
+            requests:
+              memory: "32Mi"
+              cpu: "100m"
+            limits:
+              memory: "128Mi"
+              cpu: "500m"

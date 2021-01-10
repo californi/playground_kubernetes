@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: amdocsfailuremonitor
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: amdocsfailuremonitor
+  template:
+    metadata:
+      labels:
+        app: amdocsfailuremonitor
+    spec: 
+      serviceAccountName: amdocs-user      
+      containers:        
+        - image: californibrs/amdocs_failuremonitor  #  put a wrong image to demonstrate the "describe" command
+          name: amdocsfailuremonitor
+          env:
+          - name: PYTHONUNBUFFERED
+            value: "1"          
+          resources:
+            requests:
+              memory: "32Mi"
+              cpu: "100m"
+            limits:
+              memory: "128Mi"
+              cpu: "500m"

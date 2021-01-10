@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: amdocsfailuremonitor
+spec:
+  type: LoadBalancer
+  selector:
+    app: amdocsfailuremonitor
+  ports:
+  - port: 5001 # port from application
