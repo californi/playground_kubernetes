@@ -20,7 +20,7 @@ class Failure(BaseModel):
 
 @app.get("/")
 def helloamdocs():
-    message = "Application: {0}, Host: {1} \n".format(os.environ['APP'], socket.gethostname())
+    message = "\nApplication: {0}, Host: {1}".format(os.environ['APP'], socket.gethostname())
     return message
 
 
