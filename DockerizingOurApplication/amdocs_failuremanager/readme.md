@@ -6,3 +6,5 @@ docker run -d --name amdocs_failuremanager -p 8000:5002 californibrs/amdocs_fail
 
 # testing
 get http://localhost:8000/docs
+
+

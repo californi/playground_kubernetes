@@ -1,0 +1,21 @@
+version: '3.4'
+services:
+  app1:
+    build: ./app
+    ports:
+    - "8001:5002"
+    environment:
+    - APP=App1
+  app2:
+    build: ./app
+    ports:
+    - "8002:5002"
+    environment:
+    - APP=App2
+  nginx:
+    build: ./nginx
+    ports:
+    - "8080:80"
+    depends_on:
+      - app1
+      - app2

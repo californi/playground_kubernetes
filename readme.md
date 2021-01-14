@@ -28,3 +28,5 @@ GET http://<minikube ip>:<service port>
 
 Watching - PowerShell
 while (1) {clear; kubectl get all; sleep 2}
+
+
