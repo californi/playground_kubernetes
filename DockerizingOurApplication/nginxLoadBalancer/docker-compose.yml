@@ -7,7 +7,7 @@ services:
     depends_on:
       - app1
       - app2  
-      - app3
+      #- app3
   app1:
     build: ./app
     ports:
@@ -20,9 +20,9 @@ services:
     - "8002:5002"
     environment:
     - APP=App2
-  app3:
-    build: ./app
-    ports:
-    - "8003:5002"
-    environment:
-    - APP=App3  
+  #app3:
+  #  build: ./app
+  #  ports:
+  #  - "8003:5002"
+  #  environment:
+  #  - APP=App3  
