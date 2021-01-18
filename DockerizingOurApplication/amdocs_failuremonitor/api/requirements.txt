@@ -1,3 +1,2 @@
-kubernetes
 pydantic
 httpx
