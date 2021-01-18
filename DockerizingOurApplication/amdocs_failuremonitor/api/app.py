@@ -1,8 +1,6 @@
-from kubernetes import client, config, watch
 import logging
 from pydantic import BaseModel
 import httpx
-import re
 
 # security and target
 #url_host = 'http://amdocsfailuremanager:5002'
