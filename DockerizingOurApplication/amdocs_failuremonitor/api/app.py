@@ -24,7 +24,7 @@ def main():
                               headers=headers,
                               json=failure)
 
-        logging.info(response)
+        logging.warning(response)
 
         time.sleep(5)
 
