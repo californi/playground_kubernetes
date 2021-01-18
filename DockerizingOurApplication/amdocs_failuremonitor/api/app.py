@@ -12,19 +12,21 @@ headers = {'Content-Type': 'application/json',
 
 def main():
 
-    # defining data object
-    failure = {"name": "aqui name",
-               "type": "aqui name",
-               "message": "aqui name",
-               "dateevent": "aqui name"}
+    while True:
 
-    response = httpx.post(f"{url_host}/insufficientcpu",
-                          headers=headers,
-                          json=failure)
+        # defining data object
+        failure = {"name": "aqui name",
+                   "type": "aqui name",
+                   "message": "aqui name",
+                   "dateevent": "aqui name"}
 
-    logging.info(response)
+        response = httpx.post(f"{url_host}/insufficientcpu",
+                              headers=headers,
+                              json=failure)
 
-    time.sleep(5)
+        logging.info(response)
+
+        time.sleep(5)
 
 
 if __name__ == '__main__':
