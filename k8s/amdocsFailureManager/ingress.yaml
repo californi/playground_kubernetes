@@ -7,21 +7,24 @@ spec:
   - host: "nginx-ingress.failure.svc"
     http:
       paths:
-      - path: "/metrics"
+      - pathType: Prefix  # Estrutura nova
+        path: "/metrics"
         backend:
           service:
             name: amdocsfailuremanager
             port:
               number: 5002
-      - path: "/helloamdocs"
+      - pathType: Prefix  # Estrutura nova
+        path: "/helloamdocs"
         backend:
           service:
             name: amdocsfailuremanager
             port:
               number: 5002
-      - path: "/insufficientcpu"
+      - pathType: Prefix  # Estrutura nova
+        path: "/insufficientcpu"
         backend:
           service:
             name: amdocsfailuremanager
             port:
-              number: 5002                                          
+              number: 5002                            
