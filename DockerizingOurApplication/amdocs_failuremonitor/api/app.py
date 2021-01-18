@@ -6,7 +6,7 @@ import re
 
 # security and target
 #url_host = 'http://amdocsfailuremanager:5002'
-url_host = 'nginx-ingress.failure.svc'  # testar esse aqui....
+url_host = 'http://nginx-ingress.failure.svc'  # testar esse aqui....
 headers = {'Content-Type': 'application/json',
            'Authorization': 'Bearer {}'.format('bWljcm9jb250cm9sbGVycw==')}
 
