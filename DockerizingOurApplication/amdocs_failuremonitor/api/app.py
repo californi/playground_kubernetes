@@ -5,7 +5,6 @@ import time
 
 # security and target
 url_host = 'http://amdocsfailuremanager:5002'
-# url_host = 'http://nginx-ingress.failure.svc'  # verificar depois o motivo do endereco nao funcionar nessa versao... talvez faltou algum compra de configuracao
 headers = {'Content-Type': 'application/json',
            'Authorization': 'Bearer {}'.format('bWljcm9jb250cm9sbGVycw==')}
 
