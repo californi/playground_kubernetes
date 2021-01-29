@@ -25,6 +25,6 @@ spec:
             - name: service
               containerPort: 80
               protocol: TCP
-            - name: grafana
+            - name: failuremanager
               containerPort: 5002
               protocol: TCP
