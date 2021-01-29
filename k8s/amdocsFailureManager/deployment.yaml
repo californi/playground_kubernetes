@@ -21,7 +21,3 @@ spec:
             limits:
               memory: "128Mi"
               cpu: "500m"
-          ports:
-            - name: manager
-              containerPort: 5002
-              protocol: TCP
