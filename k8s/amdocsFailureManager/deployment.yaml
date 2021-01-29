@@ -21,3 +21,10 @@ spec:
             limits:
               memory: "128Mi"
               cpu: "500m"
+          ports:
+            - name: service
+              containerPort: 80
+              protocol: TCP
+            - name: grafana
+              containerPort: 5002
+              protocol: TCP
