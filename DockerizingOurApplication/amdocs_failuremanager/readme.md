@@ -1,6 +1,6 @@
 # Building and publishing in docker hub
 docker build -t amdocsfailuremanager .
-docker tag amdocs_failuremanager californibrs/amdocsfailuremanager
+docker tag amdocsfailuremanager californibrs/amdocsfailuremanager
 docker push californibrs/amdocsfailuremanager
 
 

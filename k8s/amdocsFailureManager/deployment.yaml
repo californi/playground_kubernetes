@@ -12,7 +12,7 @@ spec:
         app: amdocsfailuremanager
     spec:       
       containers:        
-        - image: californibrs/amdocs_failuremanager  #  put a wrong image to demonstrate the "describe" command
+        - image: californibrs/<error image>  #  put a wrong image to demonstrate the "describe" command
           name: amdocsfailuremanager
           resources:
             requests:

@@ -3,7 +3,6 @@ kind: Deployment
 metadata:
   name: amdocsfailuremonitor
 spec:
-  replicas: 1
   selector:
     matchLabels:
       app: amdocsfailuremonitor
@@ -14,7 +13,7 @@ spec:
     spec: 
       serviceAccountName: amdocs-user      
       containers:        
-        - image: californibrs/amdocs_failuremonitor  #  put a wrong image to demonstrate the "describe" command
+        - image: californibrs/<error image> 
           name: amdocsfailuremonitor
           env:
           - name: PYTHONUNBUFFERED
