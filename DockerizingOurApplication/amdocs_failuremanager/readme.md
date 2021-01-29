@@ -1,10 +1,15 @@
-# Building and deploying in docker hub
-docker build -t amdocs_failuremanager .
-docker tag amdocs_failuremanager californibrs/amdocs_failuremanager
-docker push californibrs/amdocs_failuremanager
-docker run -d --name amdocs_failuremanager -p 8000:5002 californibrs/amdocs_failuremanager
+# Building and publishing in docker hub
+docker build -t amdocsfailuremanager .
+docker tag amdocs_failuremanager californibrs/amdocsfailuremanager
+docker push californibrs/amdocsfailuremanager
+
+
+
+
 
 # testing
+docker run -d --name amdocs_failuremanager -p 8000:5002 californibrs/amdocs_failuremanager
+
 get http://localhost:8000/docs
 
 
