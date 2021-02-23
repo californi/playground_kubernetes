@@ -10,9 +10,9 @@ spec:
     metadata:
       labels:
         app: amdocsfailuremanager
-    spec:       
+    spec:      
       containers:        
-        - image: californibrs/<error image>  #  put a wrong image to demonstrate the "describe" command
+        - image: californibrs/amdocsfailuremanager  #  put a wrong image to demonstrate the "describe" command
           name: amdocsfailuremanager
           resources:
             requests:

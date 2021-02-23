@@ -1,34 +1,3 @@
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: amdocs-volume-deployment
-  labels:
-    app: amdocs-volume-deployment
-spec:
-  selector:
-    matchLabels:
-      app: amdocs-volume-deployment
-  template:
-    metadata:
-      labels:
-        app: amdocs-volume-deployment
-    spec:
-      volumes:
-        - name: shared-files
-          emptyDir: {}
-      containers:
-        - image: californibrs/amdocs_failuremonitor
-          name: amdocs_failuremonitor
-          volumeMounts:
-            - name: shared-files
-              mountPath: /var/www/html
-        - image: openresty/openresty:alpine-fat
-          name: nginx
-          volumeMounts:
-            - name: shared-files
-              mountPath: /var/www/html
-
----
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:

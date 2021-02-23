@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: front
+spec:
+  selector:
+    matchLabels:
+      app: front
+  template:
+    metadata:
+      labels:
+        app: front
+    spec:
+      volumes:
+        - name: shared
+          persistentVolumeClaim:
+            claimName: shared-on-disk      
+      containers:        
+        - image: learnbook/k8s-front
+          name: front
+          volumeMounts:
+            - mountPath: /shared
+              name: shared
+        - image: learnbook/k8s-creator
+          name: creator
+          volumeMounts:
+            - mountPath: /shared
+              name: shared              

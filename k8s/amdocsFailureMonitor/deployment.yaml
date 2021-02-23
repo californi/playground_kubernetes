@@ -12,7 +12,7 @@ spec:
         app: amdocsfailuremonitor
     spec: 
       containers:        
-        - image: californibrs/<error image> 
+        - image: californibrs/amdocsfailuremonitor
           name: amdocsfailuremonitor
           env:
           - name: PYTHONUNBUFFERED
